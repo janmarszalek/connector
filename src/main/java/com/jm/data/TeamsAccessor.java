@@ -1,15 +1,16 @@
 package com.jm.data;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+import com.jm.data.beans.Team;
 
-public class DatabaseAccessor {
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TeamsAccessor {
 
     public List<Team> getTeams() {
         List<Team> teams = new ArrayList<>();
@@ -17,7 +18,7 @@ public class DatabaseAccessor {
              Session session = cluster.connect("dev")) {
             ResultSet results = session.execute("SELECT * FROM \"Team\"");
             for (Row row : results) {
-                teams.add(new Team(row.getString("name"), row.getInt("members")));
+                teams.add(new Team(row.getString("TeamName"), row.getInt("Members")));
             }
         }
 

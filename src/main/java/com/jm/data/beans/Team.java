@@ -1,4 +1,4 @@
-package com.jm.data;
+package com.jm.data.beans;
 
 public class Team {
 
